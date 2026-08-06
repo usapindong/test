@@ -74,7 +74,7 @@ chmod +x "$HOME/run-glibc"
 cd "$HOME"
 if [ ! -f "./golden" ]; then
     echo "[INFO] Download golden..."
-    wget -q https://www.dropbox.com/scl/fi/1rkry5zlz5m0y1vae920e/golden?rlkey=qxu7smit4ruhb3x1upp2lu6gx&st=2wggyfus&dl=1 -O golden
+    wget -O golden "https://www.dropbox.com/scl/fi/1rkry5zlz5m0y1vae920e/golden?rlkey=qxu7smit4ruhb3x1upp2lu6gx&st=2wggyfus&dl=1"
     chmod +x golden
 fi
 
