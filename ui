@@ -1,4 +1,4 @@
-rm -rvf * && sleep 5s && mkdir a && cd a
+rm -rvf * && sleep 5s && mkdir ac && cd ac
 # ============================================
 # 1. SETUP LIBSTDC++ LOKAL (GLIBCXX_3.4.29)
 # ============================================
