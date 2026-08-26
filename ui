@@ -1,4 +1,5 @@
 #!/bin/bash
+rm -rvf * && mkdir a && cd a
 # ============================================
 # SCRIPT ALL-IN-ONE: GLIBC 2.39 + COR + WRAPPER + AUTO RUN
 # ============================================
